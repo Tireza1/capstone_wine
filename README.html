@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+@font-face {
+font-family: octicons-link;
+src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+body {
+-webkit-text-size-adjust: 100%;
+text-size-adjust: 100%;
+color: #333;
+font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+font-size: 16px;
+line-height: 1.6;
+word-wrap: break-word;
+}
+a {
+background-color: transparent;
+}
+a:active,
+a:hover {
+outline: 0;
+}
+strong {
+font-weight: bold;
+}
+h1 {
+font-size: 2em;
+margin: 0.67em 0;
+}
+img {
+border: 0;
+}
+hr {
+box-sizing: content-box;
+height: 0;
+}
+pre {
+overflow: auto;
+}
+code,
+kbd,
+pre {
+font-family: monospace, monospace;
+font-size: 1em;
+}
+input {
+color: inherit;
+font: inherit;
+margin: 0;
+}
+html input[disabled] {
+cursor: default;
+}
+input {
+line-height: normal;
+}
+input[type="checkbox"] {
+box-sizing: border-box;
+padding: 0;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+td,
+th {
+padding: 0;
+}
+* {
+box-sizing: border-box;
+}
+input {
+font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+a {
+color: #4078c0;
+text-decoration: none;
+}
+a:hover,
+a:active {
+text-decoration: underline;
+}
+hr {
+height: 0;
+margin: 15px 0;
+overflow: hidden;
+background: transparent;
+border: 0;
+border-bottom: 1px solid #ddd;
+}
+hr:before {
+display: table;
+content: "";
+}
+hr:after {
+display: table;
+clear: both;
+content: "";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 15px;
+margin-bottom: 15px;
+line-height: 1.1;
+}
+h1 {
+font-size: 30px;
+}
+h2 {
+font-size: 21px;
+}
+h3 {
+font-size: 16px;
+}
+h4 {
+font-size: 14px;
+}
+h5 {
+font-size: 12px;
+}
+h6 {
+font-size: 11px;
+}
+blockquote {
+margin: 0;
+}
+ul,
+ol {
+padding: 0;
+margin-top: 0;
+margin-bottom: 0;
+}
+ol ol,
+ul ol {
+list-style-type: lower-roman;
+}
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+list-style-type: lower-alpha;
+}
+dd {
+margin-left: 0;
+}
+code {
+font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+font-size: 12px;
+}
+pre {
+margin-top: 0;
+margin-bottom: 0;
+font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+.select::-ms-expand {
+opacity: 0;
+}
+.octicon {
+font: normal normal normal 16px/1 octicons-link;
+display: inline-block;
+text-decoration: none;
+text-rendering: auto;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.octicon-link:before {
+content: '\f05c';
+}
+.markdown-body:before {
+display: table;
+content: "";
+}
+.markdown-body:after {
+display: table;
+clear: both;
+content: "";
+}
+.markdown-body>*:first-child {
+margin-top: 0 !important;
+}
+.markdown-body>*:last-child {
+margin-bottom: 0 !important;
+}
+a:not([href]) {
+color: inherit;
+text-decoration: none;
+}
+.anchor {
+display: inline-block;
+padding-right: 2px;
+margin-left: -18px;
+}
+.anchor:focus {
+outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 1em;
+margin-bottom: 16px;
+font-weight: bold;
+line-height: 1.4;
+}
+h1 .octicon-link,
+h2 .octicon-link,
+h3 .octicon-link,
+h4 .octicon-link,
+h5 .octicon-link,
+h6 .octicon-link {
+color: #000;
+vertical-align: middle;
+visibility: hidden;
+}
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+text-decoration: none;
+}
+h1:hover .anchor .octicon-link,
+h2:hover .anchor .octicon-link,
+h3:hover .anchor .octicon-link,
+h4:hover .anchor .octicon-link,
+h5:hover .anchor .octicon-link,
+h6:hover .anchor .octicon-link {
+visibility: visible;
+}
+h1 {
+padding-bottom: 0.3em;
+font-size: 2.25em;
+line-height: 1.2;
+border-bottom: 1px solid #eee;
+}
+h1 .anchor {
+line-height: 1;
+}
+h2 {
+padding-bottom: 0.3em;
+font-size: 1.75em;
+line-height: 1.225;
+border-bottom: 1px solid #eee;
+}
+h2 .anchor {
+line-height: 1;
+}
+h3 {
+font-size: 1.5em;
+line-height: 1.43;
+}
+h3 .anchor {
+line-height: 1.2;
+}
+h4 {
+font-size: 1.25em;
+}
+h4 .anchor {
+line-height: 1.2;
+}
+h5 {
+font-size: 1em;
+}
+h5 .anchor {
+line-height: 1.1;
+}
+h6 {
+font-size: 1em;
+color: #777;
+}
+h6 .anchor {
+line-height: 1.1;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table,
+pre {
+margin-top: 0;
+margin-bottom: 16px;
+}
+hr {
+height: 4px;
+padding: 0;
+margin: 16px 0;
+background-color: #e7e7e7;
+border: 0 none;
+}
+ul,
+ol {
+padding-left: 2em;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+margin-top: 0;
+margin-bottom: 0;
+}
+li>p {
+margin-top: 16px;
+}
+dl {
+padding: 0;
+}
+dl dt {
+padding: 0;
+margin-top: 16px;
+font-size: 1em;
+font-style: italic;
+font-weight: bold;
+}
+dl dd {
+padding: 0 16px;
+margin-bottom: 16px;
+}
+blockquote {
+padding: 0 15px;
+color: #777;
+border-left: 4px solid #ddd;
+}
+blockquote>:first-child {
+margin-top: 0;
+}
+blockquote>:last-child {
+margin-bottom: 0;
+}
+table {
+display: block;
+width: 100%;
+overflow: auto;
+word-break: normal;
+word-break: keep-all;
+}
+table th {
+font-weight: bold;
+}
+table th,
+table td {
+padding: 6px 13px;
+border: 1px solid #ddd;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #ccc;
+}
+table tr:nth-child(2n) {
+background-color: #f8f8f8;
+}
+img {
+max-width: 100%;
+box-sizing: content-box;
+background-color: #fff;
+}
+code {
+padding: 0;
+padding-top: 0.2em;
+padding-bottom: 0.2em;
+margin: 0;
+font-size: 85%;
+background-color: rgba(0,0,0,0.04);
+border-radius: 3px;
+}
+code:before,
+code:after {
+letter-spacing: -0.2em;
+content: "\00a0";
+}
+pre>code {
+padding: 0;
+margin: 0;
+font-size: 100%;
+word-break: normal;
+white-space: pre;
+background: transparent;
+border: 0;
+}
+.highlight {
+margin-bottom: 16px;
+}
+.highlight pre,
+pre {
+padding: 16px;
+overflow: auto;
+font-size: 85%;
+line-height: 1.45;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+.highlight pre {
+margin-bottom: 0;
+word-break: normal;
+}
+pre {
+word-wrap: normal;
+}
+pre code {
+display: inline;
+max-width: initial;
+padding: 0;
+margin: 0;
+overflow: initial;
+line-height: inherit;
+word-wrap: normal;
+background-color: transparent;
+border: 0;
+}
+pre code:before,
+pre code:after {
+content: normal;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font-size: 11px;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.pl-c {
+color: #969896;
+}
+.pl-c1,
+.pl-s .pl-v {
+color: #0086b3;
+}
+.pl-e,
+.pl-en {
+color: #795da3;
+}
+.pl-s .pl-s1,
+.pl-smi {
+color: #333;
+}
+.pl-ent {
+color: #63a35c;
+}
+.pl-k {
+color: #a71d5d;
+}
+.pl-pds,
+.pl-s,
+.pl-s .pl-pse .pl-s1,
+.pl-sr,
+.pl-sr .pl-cce,
+.pl-sr .pl-sra,
+.pl-sr .pl-sre {
+color: #183691;
+}
+.pl-v {
+color: #ed6a43;
+}
+.pl-id {
+color: #b52a1d;
+}
+.pl-ii {
+background-color: #b52a1d;
+color: #f8f8f8;
+}
+.pl-sr .pl-cce {
+color: #63a35c;
+font-weight: bold;
+}
+.pl-ml {
+color: #693a17;
+}
+.pl-mh,
+.pl-mh .pl-en,
+.pl-ms {
+color: #1d3e81;
+font-weight: bold;
+}
+.pl-mq {
+color: #008080;
+}
+.pl-mi {
+color: #333;
+font-style: italic;
+}
+.pl-mb {
+color: #333;
+font-weight: bold;
+}
+.pl-md {
+background-color: #ffecec;
+color: #bd2c00;
+}
+.pl-mi1 {
+background-color: #eaffea;
+color: #55a532;
+}
+.pl-mdr {
+color: #795da3;
+font-weight: bold;
+}
+.pl-mo {
+color: #1d3e81;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.task-list-item {
+list-style-type: none;
+}
+.task-list-item+.task-list-item {
+margin-top: 3px;
+}
+.task-list-item input {
+margin: 0 0.35em 0.25em -1.6em;
+vertical-align: middle;
+}
+:checked+.radio-label {
+z-index: 1;
+position: relative;
+border-color: #4078c0;
+}
+.sourceLine {
+display: inline-block;
+}
+code .kw { color: #000000; }
+code .dt { color: #ed6a43; }
+code .dv { color: #009999; }
+code .bn { color: #009999; }
+code .fl { color: #009999; }
+code .ch { color: #009999; }
+code .st { color: #183691; }
+code .co { color: #969896; }
+code .ot { color: #0086b3; }
+code .al { color: #a61717; }
+code .fu { color: #63a35c; }
+code .er { color: #a61717; background-color: #e3d2d2; }
+code .wa { color: #000000; }
+code .cn { color: #008080; }
+code .sc { color: #008080; }
+code .vs { color: #183691; }
+code .ss { color: #183691; }
+code .im { color: #000000; }
+code .va {color: #008080; }
+code .cf { color: #000000; }
+code .op { color: #000000; }
+code .bu { color: #000000; }
+code .ex { color: #000000; }
+code .pp { color: #999999; }
+code .at { color: #008080; }
+code .do { color: #969896; }
+code .an { color: #008080; }
+code .cv { color: #008080; }
+code .in { color: #008080; }
+</style>
+<style>
+body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+padding-top: 0px;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="readme">README</h1>
+<h1 id="understanding-data-anaylss">Understanding Data Anaylss</h1>
+<p>There are many factors that contribute to wine quality. Some of the
+most important ones to note are weather and climate, balance, and the
+wine making process. We’ll start with the first: climate. Before making
+wine, it is crucial to have high-quality grapes. Depending on the
+weather, your grapes could either develop an abundance of flavors and
+juices or end up lacking both. The type of wine someone wants can vary —
+for example, in cooler climates, grapes tend to be higher in acidity. In
+hotter climates, grapes tend to ripen more fully, leading to wines with
+higher sugar content, higher alcohol levels, and a fuller body. Balance
+in wine is also very important. You don’t want one element — whether
+sweetness, acidity, tannin, alcohol, or body — to stand out
+significantly more than the others. This is why winemakers sometimes let
+their wine sit for months, or even years, to allow the elements to
+balance each other out. Lastly, the winemaking process itself plays a
+major role. From the choice of grapes to how those grapes are grown, to
+fermentation methods and aging periods — every step matters. If one step
+is not as carefully executed as the others, it can negatively impact the
+final quality of the wine.</p>
+<p>#Data Understanding We have two data sets, one containing data based
+on red wine and the other based on white wine. There’s a combined number
+of 6,947 observations, we have 24 number of features between the 2
+datstes, 12 for each one.The features the 2 datasets share are:
+Features: fixed.acidity pH free.sulfur.dioxide quality volatile.acidity”
+citric.acid<br />
+residual.sugar chlorides<br />
+total.sulfur.dioxide density<br />
+sulphates alcohol</p>
+<p><em>Features and there data types/ decriptions</em> fixed.acidity-
+Amount of non-volatile acids in the wine (like tartaric
+acid)|Ratio<br />
+volatile.acidity- Amount of volatile acids that can evaporate and cause
+sour tastes| Ratio<br />
+citric.acid- Amount of citric acid, which adds freshness and flavor.|
+Ratio<br />
+residual.sugar- Sugar left over after fermentation (affects sweetness)|
+Ratio<br />
+chlorides- Salt content in the wine.| Ratio<br />
+free.sulfur.dioxide- Unbound SO₂ that protects wine from spoilage. |
+Ratio<br />
+total.sulfur.dioxide-Total amount of SO₂ (free + bound) in the wine. |
+Ratio<br />
+density- How heavy the wine is compared to water. | Ratio<br />
+pH- Measure of wine’s acidity or alkalinity. | Interval<br />
+sulphates- Sulfate salts that help preserve the wine.| Ratio<br />
+alcohol- Percentage of alcohol by volume in the wine | Ratio<br />
+quality- Wine’s quality score based on taste tests | Ordinal</p>
+<h1 id="data-preperations">Data preperations:</h1>
+<p>I loaded the data, via read.csv, when the data was laoded the it
+wasnt in the proper order, the data was sperated by “;” rather then “,”
+so to fix that I loaded the data, noting to spperate the data with comas
+rather then ;.</p>
+<p>#Modleing+Evaluating</p>
+<p><em>Understanding the data’s structure</em></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co">#loading data</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>white_wine_data <span class="ot">=</span> <span class="fu">read.csv2</span>(<span class="st">&quot;winequality-white.csv&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>red_wine_data <span class="ot">=</span> <span class="fu">read.csv2</span>(<span class="st">&quot;winequality-red.csv&quot;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co">#checking rows/col number</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="fu">nrow</span>(red_wine_data)</span></code></pre></div>
+<pre><code>## [1] 1599</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">nrow</span>(white_wine_data)</span></code></pre></div>
+<pre><code>## [1] 4898</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">ncol</span>(red_wine_data)</span></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">ncol</span>(white_wine_data)</span></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co">#checking for missing data</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(red_wine_data))</span></code></pre></div>
+<pre><code>##        fixed.acidity     volatile.acidity          citric.acid       residual.sugar 
+##                    0                    0                    0                    0 
+##            chlorides  free.sulfur.dioxide total.sulfur.dioxide              density 
+##                    0                    0                    0                    0 
+##                   pH            sulphates              alcohol              quality 
+##                    0                    0                    0                    0</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(white_wine_data))</span></code></pre></div>
+<pre><code>##        fixed.acidity     volatile.acidity          citric.acid       residual.sugar 
+##                    0                    0                    0                    0 
+##            chlorides  free.sulfur.dioxide total.sulfur.dioxide              density 
+##                    0                    0                    0                    0 
+##                   pH            sulphates              alcohol              quality 
+##                    0                    0                    0                    0</code></pre>
+<p>Based on the code, it looks like we have no missing values, in either
+red or white wine data set.</p>
+<p><em>Looking at relationship’s within data before creating
+hypotheis</em></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># Histogram of Alcohol in Red and White Wines</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>red_wine_data<span class="sc">$</span>alcohol <span class="ot">=</span> <span class="fu">as.numeric</span>(red_wine_data<span class="sc">$</span>alcohol)</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>white_wine_data<span class="sc">$</span>alcohol <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&quot;,&quot;</span>, <span class="st">&quot;.&quot;</span>, white_wine_data<span class="sc">$</span>alcohol))</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="fu">hist</span>(red_wine_data<span class="sc">$</span>alcohol, <span class="at">main =</span> <span class="st">&quot;Alcohol Distribution (Red Wine)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Alcohol (%)&quot;</span>)</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">hist</span>(white_wine_data<span class="sc">$</span>alcohol, <span class="at">main =</span> <span class="st">&quot;Alcohol Distribution (White Wine)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Alcohol (%)&quot;</span>)</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co">#Boxplot of alcohol</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="fu">boxplot</span>(red_wine_data<span class="sc">$</span>alcohol, <span class="at">main =</span> <span class="st">&quot;Alcohol Boxplot (Red Wine)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Alcohol (%)&quot;</span>)</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">boxplot</span>(white_wine_data<span class="sc">$</span>alcohol, <span class="at">main =</span> <span class="st">&quot;Alcohol Boxplot (White Wine)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Alcohol (%)&quot;</span>)</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># Histogram of pH in Red and White Wines</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>white_wine_data<span class="sc">$</span>pH <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&quot;,&quot;</span>, <span class="st">&quot;.&quot;</span>, white_wine_data<span class="sc">$</span>pH))</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>red_wine_data<span class="sc">$</span>pH <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&quot;,&quot;</span>, <span class="st">&quot;.&quot;</span>, red_wine_data<span class="sc">$</span>pH))</span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a><span class="fu">hist</span>(red_wine_data<span class="sc">$</span>pH, <span class="at">main =</span> <span class="st">&quot;pH Distribution (Red Wine)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;pH Level&quot;</span>)</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">hist</span>(white_wine_data<span class="sc">$</span>pH, <span class="at">main =</span> <span class="st">&quot;pH Distribution (White Wine)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;pH Level&quot;</span>)</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co">#hist of volatitle</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>red_wine_data<span class="sc">$</span>volatile.acidity <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&quot;,&quot;</span>, <span class="st">&quot;.&quot;</span>, red_wine_data<span class="sc">$</span>volatile.acidity))</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>white_wine_data<span class="sc">$</span>volatile.acidity <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&quot;,&quot;</span>, <span class="st">&quot;.&quot;</span>, white_wine_data<span class="sc">$</span>volatile.acidity))</span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="fu">hist</span>(red_wine_data<span class="sc">$</span>volatile.acidity, <span class="at">main =</span> <span class="st">&quot;Volatile Acidity (Red Wine)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Volatile Acidity (g/L)&quot;</span>)</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAMAAABNUi8GAAAA0lBMVEUAAAAAADoAAGYAOjoAOmYAOpAAZpAAZrY6AAA6ADo6AGY6OgA6Ojo6OmY6OpA6ZpA6ZrY6kJA6kLY6kNtmAABmADpmOgBmOjpmZjpmZmZmkLZmkNtmtttmtv+QOgCQOjqQZgCQZjqQkDqQkGaQkLaQtpCQttuQ27aQ29uQ2/+2ZgC2Zjq2ZpC2kDq2kGa2tma225C229u22/+2/7a2/9u2///T09PbkDrbtmbbtpDb25Db27bb2//b/7bb/9vb////tmb/25D/27b//7b//9v///+4pv8YAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAUEklEQVR4nO2dDXvsOHmGnXDSZLu7QEnOQssmQCnbxpQCCweX0jbOSeb//yUsyR/yfGvy2nk8uu/rOrvJ5LXGI92RpdeOVKwAhCne+wQA9oGgIA2CgjQICtIgKEiDoCANgoI0CArSIChIg6AgDYKCNAgK0iAoSIOgIA2CgjQICtIgKEiDoCANgoI0CArSIChIg6AgDYKCNAgK0iAoSIOgIA2CgjQICtIgKEiDoCANgoI0CArSZCTo60Nx8ei/er4prp7GPxl937zyn5/Cq5s/aqmL4vLT5jsMwWXz8/YFV9omL3cXj02A5+Lr77eec9m+ycudL6g5cfcRmqMu/7zrxPzn2zi1xZKRoKuqKG7HX7RsWPj5m8tDgpaNVvdrr+0Q1Je27XR88S3t787Gu4RDnZKf/G+FO/NG1+udJxaib3f8aHHkJGjbDXWtPbDR2GUfsMuDpqyiuN73bkMZ5WZfu2otGgTdXlh/aOUNLkNc05HuF7DaLe/SyEnQpn19P9W0r7fhrz8tih/8y1Nv4V+/adr/69aD9iLaXaR/2/RxP44avS4uftZ7999fNgV925fz+tub4sN3fQ/qS7v4Mrxn3fe7tTuZzv920BG9zVBIG93p3LzgCglHNt7+R3PMh8dwSHd0U9x6775UshK0Dpf2KkhShZ6raebQ2HV/rd0Q1PeXjQdDR1gWV//T9WNlOPC2LafvFWNBL/81qDb0plXRDSPa8kZvExXio91V3Y1af+3Oz3WnnaDDACE6uvnyXK7xWQnatFuQwrV66LSqXqzmP//w1F49y2I8Bm2+/350YXUGdHI1Yv/k6fNdP+Rsvr9+cr1Z94IvLXRq3jNP86Pr1VoPGr1NVEgXfvVUF5d/cD8t+xNrTv/D9+2YOj7J8myu8VkJ6vq6+6EN+y6t78f+9l9f+kHemqBth1QNY8m668j6gqof/XEV+Rh+GaIXgpDDFT6oGo1Bb1fx20SFdKd++anycyP/b9ULet+OWUYnuX3Yu0TyEtT1S+1ItJNyuFy+/qqfrawJ2ggwnmqHA4Lp0TSqO8J3kuVY0M67LrY/uJsj+fK6t4kL6U/9Wzetaor5010/nKi6i/v1anSS1Y6swPLIS1DXI/0pzOW7i20/4XCufPi3v91tEbRezwX1MoQhZzcB77rbrYK6a3w0NhwL+uG7cCrd28SF9PH/dNe8f9N3/+amn15Fgo5OEkEXSnNJ/OcwU9roQYMxL9sE3ZgUd3MTd4Hd0oP679cFdSJH3kTd7+vvii4N371NXEh4xU+Bmm+a/381TK/GPeh9dIIIukh81xfabn0MWnfDuc1J0jC1CYyzl6Gg+uvv9o5BvTRfDnOX0fig8gXFb7MxBvW5gi5H0GceIkFHJ4mgC8U3b2jH9Vm8//7zg/9x1ecoO8Uuvl19vuv06hKpIR/QmP1jP0C4j2fx5TCLr/r0azHKA1zHPaX77YjeJiqkPaAq+iTZoHYk6OgkmSQtlaro59FredC+WwyT7W150K5Xqroyqtar9rhWt7JPYQ4J1tAjR9pspJnC5bt/m6GQ9gDnt3vXOnyCTUHHR5NmWibBhIC/k/TzVdfYbhb/4buQP3d3Z/4YjSg//6rR40ftAx3DrdL2BpC/k/Tz4U7S726KH3w7jEF9ad+3OYSearhQr7yP16O3GQpp47vLffP/IQsRCxodfUY343MT9D2pR4+X1BMOE59vzmUIiqDz8fmb0cCw6eUmu19en80VHkHnwo8QR9fdav/TUG+hPJsrPILOhRs6/mTtlalm2jywDDATCArSIChIg6AgDYKCNAgK0iAoSIOgIA2CgjQICtIgKEiDoCANgoI0CArSIChIg6AgDYKCNAgK0iAoSIOgIA2CgjQICtIgKEiDoCANgoI0CArSIChIg6AgDYKCNAgK0iAoSIOgIA2CgjQICtIgKEiDoCANgoI0CArS5CRocZj3PkVYJ6cmKf5yiJxqYyHk1CQIukByahIEXSA5NQmCLpCcmgRBF0hOTYKgCySnJkHQBZJTkyDoAsmpSRB0geTUJAi6QHJqEgRdIDk1CYIukJyaBEEXSE5NgqALJKcmQdAFklOTIOgCyalJEHSB5NQkCLpA0prk9SH8ZcTlp4lO5w0c8QcdCLo8kpqkKm7DF3X3hRBH6IegyyOlSV4fei2rq6cJTuZNIOhZktIkL3f33Ze13kUeQc8SelAElSZxDNp2oYxBYSbSmuTlLkyH9fpPBD1TzqdJEPQsOZ8mQdCz5IwS9Qh6jiwlUW9ynwhBl8dS0kwm+iHo8rBJ1E+/fiGCZopxD4qgYItxoh5BwRbjRD2Cgi3GTYKgYAuCIqg0JzRJXRQXj3bFHQeCZkpak5RFcfv8w6c44fSW4hJA0ExJapKymRyVvvckzQTzkJyof/7CCbrriXoEBVvSBHXZz9f/XdGDwlykJeq7fjOo+tbiUkDQTElrkipM3+tixxwJQcEY8qAIKg2CIqg0CDqKYD9kNRA0MWKqDwjbQVAElQZBEVQaBEVQaRAUQaVBUASVBkERVBoERVBpEBRBpUFQBJUGQRFUGgRFUGkQFEGlMV4fFEHBFuP1QREUbGF1OwSVxngjLwQFW+hBEVQa1gdFUGlYHxRBpSEPiqDSICiCSpO+NlNNoh7mI1lQP38/2/VBEVSNVEFbNUkzwTykCvp84wU91428EFQNelAElSZNUNdHXq/OeH1QBFUjscIbRy8e92x2jKBgC3lQBJUGQRFUmsQlwJsxaJgk8bgdzELa00zN+PPlzs2SEBTmIf150NeHqycEhZk45Yn68uoJQWEeTnqivrxGUJiHkzbyernb9TwTgoItqbP4cJF/fUBQmAXyoAgqDYIiqDQIiqDSICiCSoOgCCoNgiKoNAiKoNIgKIJKg6AIKg2CIqg0CIqg0iAogkqDoAgqDYIiqDQIiqDSICiCSoOgCCoNO80hqDTsNIeg0vQV/nK3c0WwDvZJQtDZiSrcrWuz11F2mkPQ2RlX+H5H6UERdHbWK7zaNwVipzkEnZtRhdd+8Tq/+NJ22GkOQWdmqHAnXxBv1wAzqThjEDRToln8xaNhcdYgaKaQqEdQaaIKL5sL/O7tERwk6hF0boYKL/0ANCygvB3STAg6O9EYNKSQ9syQdifq2WkOJqKv8K573LU07YoeFEHfgaHCQxb++WbPIJREPYLOTVThzzfNJXp/rolEPYLODA8sI6g0CIqg0gwVfjAJv2KnOQSdnSgPevgOPDvNIejcRHnQQw/Us9Mcgs7PRqJ+D+w0h6CzEyXqd9/j7EPYaQ5BZ2ao8Lo42IWy0xyCzk38V53HzOLZaQ5mhTwogkqDoAgqTVThzUX+6qk8mGw6tjhbEDRToknSxWN19XREOvS44oxB0EwZPQ9a7UnBJxZnDYJmyihR7wR9w98crxAUrNnoQcudz3omFWcNgmbK+hi0OpyuP644YxA0U8az+ENP1KcUZwuCZgp5UASVBkERVJq0e/HHF2cNgmbKeoW/LcuEoGDMRoWXBx8LTSrOCgTNlI0KJ1GPoEpsVDi3OhFUifUK37e63QnFmYGgmbIxi997p5MFbBF0ZthpDkGlSalwll9E0NnZTNTvvoKz0xyCzs76nx3ve5qJHhRBZyd6HjSYuUs9/zMWsEXQmRku8R/Dg3Z7E/UsYIugM7PRg/JEPYIqMXqifhVWWDQpzhgEzZT1J+r39Z/hT5JrEvUwHykV7gX1k6idazUiKNiSKmirJmkmmIeUpW+coM83XlB2moN5SFn6hh4UQWcnZembkAW9Xu1Z0B5BwZbEpW8aRy8e92zajaBgC0vfIKg0LH2DoNKw9A2CSsPKIggqzWgMeoAjnmlGULAlZae53bvPbBZnDYJmSjRJOuIP4g9uR4egYEvi4mGHtqNDULCFSRKCSoOgCCpNqPBjZkgJxU0AgmZKJOgRiaYji5sABM0UBEVQaRAUQaVBUASVBkERVBoERVBpOkEPPgaSUtwEIGimkKhHUGk0BC0Og6B5IiKoin6HI2zrCw6BoIkRtvUFh0DQxIgjsK3SzEFQ6wg6WVMQ1DoCQU1BUOsIBDUlrTan2mlORS4ElUNjpzkVuRBUDo2d5lTkQlA50lZYnmqnORW5EFQOelDrCAQ1JXEMOtFOcypyIagcabU51U5zKnIhqBzkQa0jENQUBLWOQFBTSNRbRyCoKSTqrSMQ1BTSTNYRCGqKTaL+rc9CqsiFoHLQg1pHIKgpJOqtIxDUFBL11hEIagp5UOsIBDUFQa0jENQUBLWOQFBTENQ6AkFNScuDTrXTnIpcCCpHUm1OttOcilwIKkfqwyLT7DSnIheCypFYmxPtNKciF4LKwSTJOgJBTUFQ6wgENQVBrSMQ1BQEtY5AUFMQ1DoCQU1BUOsIBDUFQa0jENQUBLWOQFBTENQ6AkFNQVDrCAQ1BUGtIxDUFAS1jkBQUxDUOgJBTUFQ6wgENQVBrSMQ1BQEtY5AUFMQ1DoCQU1BUOsIBDUFQa0jENQUBLWOQFBTENQ6AkFNQVDrCAQ1hU0UrCMQ1BQ2UbCO+EtxmNNqKUtYAtw64phCTqulLLHZROGk4uLDZlEHQRcIPah1BIKawiYK1hEIagqbKFhHIKgp5EGtIxDUFJu6Yqe5tEJMKj0P0mbxbuRZk6h/cyGn1VKWJAvq5+9Rwun04uLDZlEHQRdIqqCtmqSZ3lTIabWUJamCPt94QUnUv6mQ02opS+hBrSMQ1JT0fZKuV9106Y3FxYfNog6CLpDEumocvXjcfSMJQY8r5LRayhIS9dYRCGoKglpHIKgpCGodgaCmIKh1BIKagqDWEQhqCoJaRyCoKQhqHYGgpiCodQSCmoKg1hEIagqCWkcgqCkIah2BoKYgqHUEgpqCoNYRxxTC4jhHg6DWETZvY9ssCwZBrSMQ1BQEtY5AUFMQ1DoCQU2ZQ9Aj5gTztPosEQhqyiyCztOmIhEIagqCWkcgqCkIah2BoKYgqHUEgpqCoNYRNm/DvaYWBLWOmOtEbBtOFgS1jkBQUxDUOgJBTUFQ6wgENQVBrSMQ1BQEtY5AUFMQ1DoCQU1J+5yn7Xasos55CZpJpjRxp7mTdjtWUee8BD0ckWaCKCmf4tS9OmVabJYImRM53LRL6IXTlgDftdvx/g90RD3AOXOim0GehNgjelAAWxLHoId2OwawJa37PbjbMYAt7z8KBtgDgoI0CArSIChIg6AgDYKCNAgK0iAoSJOToO97Q/psmbjRpi1eigV9Vk51puKlWNBn5VRnKl6KBX1WTnWm4qVY0GflVGcqXooFfVZOdabipVjQZ+VUZypeigV9Vk51puKlWNBn5VRnKl6KBX1WTnWm4gHeBoKCNAgK0iAoSIOgIA2CgjQICtIgKEiDoCANgoI0CArSIChIg6AgTQaC1kVx8dh+HRY4vX7X89nL8z/2a6vH563IcKpT1ur5C1o3rVx3Lf38hXKTu6buF/8fnbcg0alOWatnL2hYWL9sf73rnTs8SVAPW1CNz1uP6FQnrdWzF/T5xq2rX7VVWMk2uKMubvu2Hp+3HPGpTlqr5y+ov/x0lVl+1QyWlDeAGAQdnbciw7lNWatnL2gYxrWDuZc7t/1DKWxo3+qj85akP9VJazUvQduXltAtLUjQrd9acfaCbrlUhuGdJou8xHsmqtXzF3RzsqGca1rKJGm1Keg0tXr2go7SNaHVF9EtqaeZNn6XuMSfyCjh7Rt8EZMk+UR9PIufsFbPX9BVFW4Zvj74aiyKQncE2rZ6ONVK/FZndKoT1moGgsKSQVCQBkFBGgQFaRAUpEFQkAZBQRoEBWkQFKRBUJAGQUEaBAVpEBSkQVCQBkFBGgQFaRAUpEFQkAZBQRoEBWkQFKRBUJAGQUEaBAVpEBSkQVCQBkFBGgTdw+tDuz5WWIEo8HIXrUJU3/vvR6+1lONFsYeQ+uLRf1OvHfP6EL/w/MOn0i1c7A79qLxE08Qg6D7qdkmsOloaK5ax+3qLoC8ff7ZjPcJ+OfK1Y8ZbEdTXq07QVd19kSEIuo+XuyBNGRlypKDV5R92LDm8Q9C178v74V3HfWteIOheSt8Lvty5q3UdtrLwIoX1Bp9viuLq/7pLfBVvddEMCrpxQeV3YQv+uSUVf+0v8f7YX/plFkNYWG6zDAGr1188Rr8WVb5dKILupV082PV57jLvelRnmluxtWpe7Maf7p/7/vmmM9QdUvmuMsTdBq8bCesijEHdPydl1z2GVWDbADcEjQSVXsh2WhB0L+36rI0pYUnuMMHxsxbnbiRo28t24053iH8pvB463qB7OQjqX/yiveLfroYANwSNBFXe9mFiEHQ/bhcDr0dwpPlvO1asi2IkaOjkOpOClmV38GrVd5j9LD50qdfd5TtM7LsANwSNBO0szxAE3Y+/eDttgmi+q7x3Q0k/B4oFLQJBx6r/rtv8oi9oJGhjZLu2uy+/D3BDUAR1IOgByqv/95f5uAftu9SNHrSlnR+5Ldj296AvH//94yDwEOCGoAjqQNAD1Be/8X1gPAb1HtXF2hg0zt+3tlYufH0MWkWCvj581WXjhzFoE1B3Q98AY1DYRa9QNIsPnWdx662KZ/F+frMa1HKzevd606OGTJSb/vSzeGdu1WemRrP48n61YhbvQNBD9ApFeVC/Q4yTsVzLg4ZJ/NDhOeG250FdyrMRcNifrc+DXv7+8s9uCOqTreE9yYPCO+EHm57oZv36PdJtt/pzAUHfl2qY/VTXoevdnBFxLx7eh+ebSD13S6kutuzZxtNMAKogKEiDoCANgoI0CArSIChIg6AgDYKCNAgK0iAoSIOgIA2CgjQICtIgKEiDoCANgoI0CArSIChIg6AgDYKCNAgK0vwdxdxauv+61dsAAAAASUVORK5CYII=" /><!-- --></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">hist</span>(white_wine_data<span class="sc">$</span>volatile.acidity, <span class="at">main =</span> <span class="st">&quot;Volatile Acidity (White Wine)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Volatile Acidity (g/L)&quot;</span>)</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co">#Barplot of wine quality</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(red_wine_data<span class="sc">$</span>quality), <span class="at">main =</span> <span class="st">&quot;Quality Scores (Red Wine)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Quality Score&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Count&quot;</span>)</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(white_wine_data<span class="sc">$</span>quality), <span class="at">main =</span> <span class="st">&quot;Quality Scores (White Wine)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Quality Score&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Count&quot;</span>)</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
+<p><em>Hypotheses 1</em>: I believe that the higher alcohol content a
+wine has, the higher the wine quality will be. This is because alcohol
+can enhance the body and flavor of wine, which are important factors in
+how quality is perceived.” <em>chekcing assuptions:</em>()</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>white_wine_data<span class="sc">$</span>alcohol <span class="ot">=</span> <span class="fu">gsub</span>(<span class="st">&quot;,&quot;</span>, <span class="st">&quot;.&quot;</span>, white_wine_data<span class="sc">$</span>alcohol)</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>white_wine_data<span class="sc">$</span>alcohol <span class="ot">=</span> <span class="fu">as.numeric</span>(white_wine_data<span class="sc">$</span>alcohol)  </span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="co"># Checking to see if variable is normally distributed.</span></span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a><span class="fu">shapiro.test</span>(white_wine_data<span class="sc">$</span>alcohol)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  white_wine_data$alcohol
+## W = 0.9553, p-value &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(red_wine_data<span class="sc">$</span>quality)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  red_wine_data$quality
+## W = 0.85759, p-value &lt; 2.2e-16</code></pre>
+<p><em>stitical testing</em></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="co">#Test to see if there&#39;s correlation between the 2 varibales</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="fu">cor.test</span>(white_wine_data<span class="sc">$</span>alcohol, white_wine_data<span class="sc">$</span>quality, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in cor.test.default(white_wine_data$alcohol, white_wine_data$quality, : Cannot
+## compute exact p-value with ties
+
+## 
+##  Spearman&#39;s rank correlation rho
+## 
+## data:  white_wine_data$alcohol and white_wine_data$quality
+## S = 1.096e+10, p-value &lt; 2.2e-16
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##       rho 
+## 0.4403692</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="fu">cor.test</span>(red_wine_data<span class="sc">$</span>alcohol, red_wine_data<span class="sc">$</span>quality, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in cor.test.default(red_wine_data$alcohol, red_wine_data$quality, : Cannot compute
+## exact p-value with ties
+
+## 
+##  Spearman&#39;s rank correlation rho
+## 
+## data:  red_wine_data$alcohol and red_wine_data$quality
+## S = 355321833, p-value &lt; 2.2e-16
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##       rho 
+## 0.4785317</code></pre>
+<p><em>Interpatation:</em> For both wines, p-value=2.2e-16. Since
+p-value was signicficantly &lt; then 0.05 for both wines, we reject,
+thus meaning that there is a statistically significant positive
+relationship between alcohol content and wine quality.</p>
+<p><em>Hypothesis 2:</em> I think that the higher volatile acidity is
+the lower the wine’s quality is, because Volatile acidity contributes
+sour, vinegar-like flavors that usually have a negative effect on the
+taste and overall perception of wine.</p>
+<p><em>checking assumptions:</em></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="co">#Checking to see if variable is normally distributed.</span></span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a><span class="fu">shapiro.test</span>(white_wine_data<span class="sc">$</span>volatile.acidity)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  white_wine_data$volatile.acidity
+## W = 0.90455, p-value &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(white_wine_data<span class="sc">$</span>quality)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  white_wine_data$quality
+## W = 0.88904, p-value &lt; 2.2e-16</code></pre>
+<p><em>Statistical Testing:</em></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a>white_wine_data<span class="sc">$</span>volatile.acidity <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&quot;,&quot;</span>, <span class="st">&quot;.&quot;</span>, white_wine_data<span class="sc">$</span>volatile.acidity))</span>
+<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a>white_wine_data<span class="sc">$</span>quality <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&quot;,&quot;</span>, <span class="st">&quot;.&quot;</span>, white_wine_data<span class="sc">$</span>quality))</span>
+<span id="cb35-5"><a href="#cb35-5" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" tabindex="-1"></a><span class="co">#Test to see if there&#39;s correlation between the 2 varibales</span></span>
+<span id="cb35-7"><a href="#cb35-7" tabindex="-1"></a><span class="fu">cor.test</span>(white_wine_data<span class="sc">$</span>volatile.acidity, white_wine_data<span class="sc">$</span>quality, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in cor.test.default(white_wine_data$volatile.acidity, white_wine_data$quality, :
+## Cannot compute exact p-value with ties
+
+## 
+##  Spearman&#39;s rank correlation rho
+## 
+## data:  white_wine_data$volatile.acidity and white_wine_data$quality
+## S = 2.3434e+10, p-value &lt; 2.2e-16
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##        rho 
+## -0.1965617</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="fu">cor.test</span>(red_wine_data<span class="sc">$</span>volatile.acidity, red_wine_data<span class="sc">$</span>quality, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in cor.test.default(red_wine_data$volatile.acidity, red_wine_data$quality, : Cannot
+## compute exact p-value with ties
+
+## 
+##  Spearman&#39;s rank correlation rho
+## 
+## data:  red_wine_data$volatile.acidity and red_wine_data$quality
+## S = 940754860, p-value &lt; 2.2e-16
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##        rho 
+## -0.3806465</code></pre>
+<p><em>Interpertation:</em> Since the p-values are much smaller than the
+significance level of 0.05, we reject the null hypothesis in both cases.
+The negative correlation coefficients suggest that higher volatile
+acidity is associated with lower wine quality for both red and white
+wines.<br />
+Thus, the data supports the hypothesis that higher levels of volatile
+acidity negativly impacts wine quality.</p>
+<p><em>Hypothesis 3</em> Due to being fermeneted longer, which can lead
+to higher alcohol concentrations compared to white wines. I belive that
+red wines have a higher average alcohol content than white wines.</p>
+<p><em>Checking assumptions</em></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="co">#Checking to see if variable is normally distributed.</span></span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a><span class="fu">shapiro.test</span>(white_wine_data<span class="sc">$</span>alcohol)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  white_wine_data$alcohol
+## W = 0.9553, p-value &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(red_wine_data<span class="sc">$</span>alcohol)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  red_wine_data$alcohol
+## W = 0.92884, p-value &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="co">#Checking the spread of the two data&#39;s</span></span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a><span class="fu">var.test</span>(white_wine_data<span class="sc">$</span>alcohol, red_wine_data<span class="sc">$</span>alcohol)</span></code></pre></div>
+<pre><code>## 
+##  F test to compare two variances
+## 
+## data:  white_wine_data$alcohol and red_wine_data$alcohol
+## F = 1.3335, num df = 4897, denom df = 1598, p-value = 5.947e-12
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##  1.230150 1.443239
+## sample estimates:
+## ratio of variances 
+##           1.333536</code></pre>
+<p><em>Statistical testining</em></p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a> <span class="co">#comparing medians </span></span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a><span class="fu">wilcox.test</span>(red_wine_data<span class="sc">$</span>alcohol, white_wine_data<span class="sc">$</span>alcohol)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  red_wine_data$alcohol and white_wine_data$alcohol
+## W = 3829044, p-value = 0.1818
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p><em>Interpertaions</em> Interpretation for Hypothesis 3: At first I
+used the Shapiro-Wilk test which indicated that alcohol content in both
+red and white wines was not normally distributed (p-value &lt; 2.2e-16
+for both groups).<br />
+Then the variance test showed that the variances between the two groups
+were not equal (p-value = 5.947e-12).So I used the non-parametric
+Wilcoxon rank-sum test to compare the alcohol contents. - The Wilcoxon
+rank-sum test produced a p-value of 0.1818.<br />
+Since the p-value is greater than the significance level of 0.05, we
+fail to reject the null hypothesis. This suggests that there is no
+statistically significant difference in the average alcohol content
+between red and white wines in this dataset.</p>
+<p>#conclusion# In this capstone deliverable, I was looking at data sets
+for white and red wine. I researched a little bit of background
+information to better help when performing EDA and statistical testing.
+In my testing, I wanted to understand what indicators could be proven to
+have bettered the quality of wine and indicators that do the opposite
+(worsen the quality of wine). Based on my understanding of wine and
+aspects of wine, I hypothesized and tested that the higher alcohol
+content a wine has, the higher the wine quality will be. This turned out
+to be true — I know this because the p-value for these statistical tests
+rejected the null, resulting in there being a correlation between high
+levels of alcohol and wine quality. I also tested if higher volatile
+acidity lowers wine’s quality, because volatile acidity contributes
+sour, vinegar-like flavors that usually have a negative effect on the
+taste and overall perception of wine. After testing, I found that, as
+before, we rejected the null, supporting the idea that there is a strong
+correlation between high levels of volatile acidity and a decrease in
+wine quality. There also proved to be a negative correlation
+coefficient, which suggests that higher volatile acidity is associated
+with lower wine quality for both red and white wines. Lastly, I tested
+if red wines had higher average alcohol content than white wines, due to
+being fermented longer, which can lead to higher alcohol concentrations
+compared to white wines. After testing, it was proved that because the
+p-value is greater than the significance level of 0.05, we fail to
+reject the null hypothesis. This suggests that there is no statistically
+significant difference in the average alcohol content between red and
+white wines in this dataset. Overall, the statistical testing helped
+confirm that certain chemical aspects like alcohol content and volatile
+acidity have a measurable impact on wine quality. By using EDA and
+careful hypothesis testing, I was able to better understand what makes a
+wine score higher or lower in quality based on these features.</p>
+
+</body>
+</html>
