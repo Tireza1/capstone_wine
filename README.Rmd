@@ -21,17 +21,23 @@ knitr::opts_chunk$set(echo = TRUE)
     Balance in wine is also very important. You don't want one element — whether sweetness, acidity, tannin, alcohol, or body — to stand out significantly more than the others. This is why winemakers sometimes let their wine sit for months, or even years, to allow the elements to balance each other out. Lastly, the winemaking process itself plays a major role. From the choice of grapes to how those grapes are grown, to fermentation methods and aging periods — every step matters. If one step is not as carefully executed as the others, it can negatively impact the final quality of the wine.
 
 
-#Data Understanding
-We have two data sets, one containing data based on red wine and the other based on white wine.   There's a combined number of 6,947 observations, we have 24 number of features between the 2 datstes, 12 for each one.The features the 2 datasets share are:
+# Data Understanding
+
+We have two data sets, one containing data based on red wine and the other based on white wine.   There's a combined number of 6,947 observations. 
+We have 24 number of features between the 2 data sets, 12 for each one.
+
+The features the 2 data sets share are:
+
 Features:
 fixed.acidity             pH
 free.sulfur.dioxide    quality
 volatile.acidity"      citric.acid         
 residual.sugar         chlorides            
 total.sulfur.dioxide   density                           
-sulphates              alcohol             
+sulfates              alcohol             
 
-*Features and  there data types/ decriptions*
+# Features and  there data types/ descriptions
+ 
 fixed.acidity- Amount of non-volatile acids in the wine (like tartaric acid)|Ratio              
 volatile.acidity- Amount of volatile acids that can evaporate and cause sour tastes| Ratio       
 citric.acid- Amount of citric acid, which adds freshness and flavor.| Ratio              
@@ -41,16 +47,18 @@ free.sulfur.dioxide- Unbound SO₂ that protects wine from spoilage. | Ratio
 total.sulfur.dioxide-Total amount of SO₂ (free + bound) in the wine. | Ratio              
 density- How heavy the wine is compared to water. | Ratio              
 pH- Measure of wine’s acidity or alkalinity. | Interval           
-sulphates- Sulfate salts that help preserve the wine.| Ratio              
+sulfates- Sulfate salts that help preserve the wine.| Ratio              
 alcohol- Percentage of alcohol by volume in the wine | Ratio              
 quality- Wine's quality score based on taste tests | Ordinal   
 
 # Data preperations:
+
 I loaded the data, via read.csv, when the data was laoded the  it wasnt in the proper order, the data was sperated by ";" rather then "," so to fix that I loaded the data, noting to spperate the data with comas rather then ;. 
 
-#Modleing+Evaluating
+# Modleing+Evaluating
 
-*Understanding the data's structure*
+ Understanding the data's structure*
+ 
 ```{r}
 #loading data
 white_wine_data = read.csv2("winequality-white.csv")
@@ -63,16 +71,18 @@ ncol(red_wine_data)
 ncol(white_wine_data)
 
 ```
+# checking for missing data
 ```{r}
 
-#checking for missing data
+
 colSums(is.na(red_wine_data))
 colSums(is.na(white_wine_data))
 ```
 Based on the code, it looks like we have no missing values, in either red or white wine data set. 
 
 
-*Looking at relationship's within data before creating hypotheis*
+# Looking at relationship's within data before creating hypothesis*
+ 
 ```{r}
 # Histogram of Alcohol in Red and White Wines
 red_wine_data$alcohol = as.numeric(red_wine_data$alcohol)
@@ -101,8 +111,10 @@ barplot(table(red_wine_data$quality), main = "Quality Scores (Red Wine)", xlab =
 barplot(table(white_wine_data$quality), main = "Quality Scores (White Wine)", xlab = "Quality Score", ylab = "Count")
 ```
 
-*Hypotheses 1*: I believe that the higher alcohol content a wine has, the higher the wine quality will be. This is because alcohol can enhance the body and flavor of wine, which are important factors in how quality is perceived." 
-*chekcing assuptions:*()
+# Hypotheses 1
+I believe that the higher alcohol content a wine has, the higher the wine quality will be. This is because alcohol can enhance the body and flavor of wine, which are important factors in how quality is perceived." 
+
+# chekcing assuptions
 ```{r}
 white_wine_data$alcohol = gsub(",", ".", white_wine_data$alcohol)
 white_wine_data$alcohol = as.numeric(white_wine_data$alcohol)  
@@ -112,28 +124,29 @@ shapiro.test(white_wine_data$alcohol)
 shapiro.test(red_wine_data$quality)
 
 ```
-*stitical testing*
+# stitical testing
 ```{r}
 
 #Test to see if there's correlation between the 2 varibales
 cor.test(white_wine_data$alcohol, white_wine_data$quality, method = "spearman")
 cor.test(red_wine_data$alcohol, red_wine_data$quality, method = "spearman")
 ```
-*Interpatation:*
+# Interpatation:
 For both wines, p-value=2.2e-16. Since p-value was signicficantly < then 0.05 for both wines, we reject, thus meaning that there is a statistically significant positive relationship between alcohol content and wine quality.
 
 
 
-*Hypothesis 2:* I think that the higher volatile acidity is the lower the  wine's quality is, because Volatile acidity contributes sour, vinegar-like flavors that usually  have a negative effect on the taste and overall perception of wine.
+# Hypothesis 2:
+I think that the higher volatile acidity is the lower the  wine's quality is, because Volatile acidity contributes sour, vinegar-like flavors that usually  have a negative effect on the taste and overall perception of wine.
 
-*checking assumptions:*
+# checking assumptions:
 ```{r}
 #Checking to see if variable is normally distributed.
 shapiro.test(white_wine_data$volatile.acidity)
 shapiro.test(white_wine_data$quality)
 
 ```
-*Statistical Testing:*
+# Statistical Testing:
 ```{r}
 #
 
@@ -147,15 +160,15 @@ cor.test(red_wine_data$volatile.acidity, red_wine_data$quality, method = "spearm
 
 
 ```
-*Interpertation:*
+# Interpertation:
 Since the p-values are much smaller than the significance level of 0.05, we reject the null hypothesis in both cases. The negative correlation coefficients suggest that higher volatile acidity is associated with lower wine quality for both red and white wines.  
 Thus, the data supports the hypothesis that higher  levels of volatile acidity negativly impacts wine quality.
 
 
-*Hypothesis 3*
-Due to being fermeneted longer, which can lead to higher alcohol concentrations compared to white wines. I belive that red wines have a higher average alcohol content than white wines.  
+# Hypothesis 3:
+Due to being fermented longer, which can lead to higher alcohol concentrations compared to white wines. I belive that red wines have a higher average alcohol content than white wines.  
 
-*Checking assumptions*
+# Checking assumptions:
 ```{r}
 #Checking to see if variable is normally distributed.
 shapiro.test(white_wine_data$alcohol)
@@ -165,19 +178,20 @@ shapiro.test(red_wine_data$alcohol)
 #Checking the spread of the two data's
 var.test(white_wine_data$alcohol, red_wine_data$alcohol)
 ```
-*Statistical testining*
+# Statistical testining*
 ```{r}
  #comparing medians 
 wilcox.test(red_wine_data$alcohol, white_wine_data$alcohol)
 ```
-*Interpertaions*
+# Interpertaions*
 Interpretation for Hypothesis 3:
 At first I used the Shapiro-Wilk test which  indicated that alcohol content in both red and white wines was not normally distributed (p-value < 2.2e-16 for both groups).  
 Then the variance test showed that the variances between the two groups were not equal (p-value = 5.947e-12).So I used the non-parametric Wilcoxon rank-sum test to compare the alcohol contents.
 - The Wilcoxon rank-sum test produced a p-value of 0.1818.  
 Since the p-value is greater than the significance level of 0.05, we fail to reject the null hypothesis. This suggests that there is no statistically significant difference in the average alcohol content between red and white wines in this dataset.
 
-#conclusion#
+# conclusion
+
   In this capstone deliverable, I was looking at data sets for white and red wine. I researched a little bit of background information to better help when performing EDA and statistical testing.
   In my testing, I wanted to understand what indicators could be proven to have bettered the quality of wine and indicators that do the opposite (worsen the quality of wine). Based on my understanding of wine and aspects of wine, I hypothesized and tested that the higher alcohol content a wine has, the higher the wine quality will be. This turned out to be true — I know this because the p-value for these statistical tests rejected the null, resulting in there being a correlation between high levels of alcohol and wine quality.
   I also tested if higher volatile acidity lowers wine's quality, because volatile acidity contributes sour, vinegar-like flavors that usually have a negative effect on the taste and overall perception of wine. After testing, I found that, as before, we rejected the null, supporting the idea that there is a strong correlation between high levels of volatile acidity and a decrease in wine quality. There also proved to be a negative correlation coefficient, which suggests that higher volatile acidity is associated with lower wine quality for both red and white wines.
