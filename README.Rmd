@@ -17,8 +17,8 @@ knitr::opts_chunk$set(echo = TRUE)
 # Understanding Data Anaylss
 
   There are many factors that contribute to wine quality. Some of the most important ones to note are weather and climate, balance, and the wine making process.
-  We'll start with the first: climate. Before making wine, it is crucial to have high-quality grapes. Depending on the weather, your grapes could either develop an abundance of flavors and juices or end up lacking both. The type of wine someone wants can vary — for example, in cooler climates, grapes tend to be higher in acidity. In hotter climates, grapes tend to ripen more fully, leading to wines with higher sugar content, higher alcohol levels, and a fuller body.
-    Balance in wine is also very important. You don't want one element — whether sweetness, acidity, tannin, alcohol, or body — to stand out significantly more than the others. This is why winemakers sometimes let their wine sit for months, or even years, to allow the elements to balance each other out. Lastly, the wine making process itself plays a major role. From the choice of grapes to how those grapes are grown, to fermentation methods and aging periods — every step matters. If one step is not as carefully executed as the others, it can negatively impact the final quality of the wine.
+  We'll start with the first: climate. Before making wine, it is crucial to have high quality grapes. Depending on the weather, your grapes could either develop an abundance of flavors and juices or end up lacking both. The type of wine someone wants can vary, for example, in cooler climates, grapes tend to be higher in acidity. In hotter climates, grapes tend to ripen more fully, leading to wines with higher sugar content, higher alcohol levels, and a fuller body.
+    Balance in wine is also very important. You don't want one element, whether sweetness, acidity, tannin, alcohol, or body, to stand out significantly more than the others. This is why winemakers sometimes let their wine sit for months, or even years, to allow the elements to balance each other out. Lastly, the wine making process itself plays a major role. From the choice of grapes to how those grapes are grown, to fermentation methods and aging period. If one step is not as carefully executed as the others, it can negatively impact the final quality of the wine.
 
 
 # Data Understanding
@@ -77,18 +77,30 @@ ncol(white_wine_data)
 ```
 # Summary Statistics:
 ```{r}
+# Convert all columns to numeric safely, replacing comma with dot
+red_wine_data[] <- lapply(red_wine_data, function(x) {
+  as.numeric(gsub(",", ".", x))
+})
 summary(red_wine_data)
-summary(white_wine_data)
+
+
 ```
-Red wine summary:
+# Red wine summary:
+The red wine dataset includes 12 features that describe different chemical properties. Alcohol ranges from 8.5% to 14%, with an average of about 10.3%, and most wines have a quality rating around 6. Some features like residual sugar and total sulfur dioxide have wide ranges, suggesting a few extreme values. Overall, the data shows a good mix of values, with some variables slightly higher in the top quartile.
 
-The red wine data set contains 1,599 observations. There are a  few numeric columns ,there's volatile acidity that has a mean of about 0.53, and alcohol ranges from 8.4% to 14.9% with a mean of 10.42%. The wine quality scores range from 3 to 8, with a median of 6 and an average of 5.64.
+```{r}
+white_wine_data[] <- lapply(white_wine_data, function(x) {
+  as.numeric(gsub(",", ".", x))
+})
+summary(white_wine_data)
 
-white wine summary:
+```
+# white wine summary:
+The white wine dataset includes 12 features as well and shows a wide range in some values, especially residual sugar (up to 65.8 g/L) and total sulfur dioxide (up to 440 mg/L). Alcohol content ranges from 8% to 14.2%, with an average around 10.5%. Most wines have a quality rating of 5 or 6, with a median of 6. Overall, the data seem well-distributed, though some features show signs of high variability and possible outliers.
 
-The white wine data set has 4,898 observations. Volatile acidity averages 0.28, alcohol ranges from 8.0% to 14.2% with a mean of 10.51%, and pH values average around 3.19. Wine quality scores range from 3 to 9, with a mean of 5.88 and a median of 6.
 
 # checking for missing data
+
 ```{r}
 
 
@@ -102,31 +114,57 @@ Based on the code, it looks like we have no missing values, in either red or whi
  
 ```{r}
 # Histogram of Alcohol in Red and White Wines
-red_wine_data$alcohol = as.numeric(red_wine_data$alcohol)
-white_wine_data$alcohol = as.numeric(gsub(",", ".", white_wine_data$alcohol))
-hist(red_wine_data$alcohol, main = "Alcohol Distribution (Red Wine)", xlab = "Alcohol (%)")
-hist(white_wine_data$alcohol, main = "Alcohol Distribution (White Wine)", xlab = "Alcohol (%)")
+par(mfrow = c(1, 2))  # Split plot area into 2 columns
+hist(red_wine_data$alcohol, main = "Alcohol (Red Wine)", xlab = "Alcohol (%)", col = "red")
+hist(white_wine_data$alcohol, main = "Alcohol (White Wine)", xlab = "Alcohol (%)", col = "white")
+par(mfrow = c(1, 1))  # Reset layout
+```
 
+Here we're using a histogram plot to show the average alcohol content in wine. This type of plot is helpful because it clearly displays the most common alcohol levels and highlights any potential outliers.
+
+
+```{r}
 #Boxplot of alcohol
 boxplot(red_wine_data$alcohol, main = "Alcohol Boxplot (Red Wine)", ylab = "Alcohol (%)")
 boxplot(white_wine_data$alcohol, main = "Alcohol Boxplot (White Wine)", ylab = "Alcohol (%)")
 
+```
+
+Here we use a boxplot to show the spread and distribution of alcohol content in the wines. A boxplot is helpful because it clearly shows the median, overall range, and any outliers in the data.
+
+```{r}
 # Histogram of pH in Red and White Wines
 white_wine_data$pH = as.numeric(gsub(",", ".", white_wine_data$pH))
 red_wine_data$pH = as.numeric(gsub(",", ".", red_wine_data$pH))
 hist(red_wine_data$pH, main = "pH Distribution (Red Wine)", xlab = "pH Level")
 hist(white_wine_data$pH, main = "pH Distribution (White Wine)", xlab = "pH Level")
 
+```
+
+Again here we are using a box plot because it does the best at showing us the  distribution of pH levels in red and white wines. This way of plotting helps us better analyze where most wines fall on the pH scale and whether the data is skewed or contains any unusual values.
+```{r}
 #hist of volatitle
 red_wine_data$volatile.acidity = as.numeric(gsub(",", ".", red_wine_data$volatile.acidity))
 white_wine_data$volatile.acidity = as.numeric(gsub(",", ".", white_wine_data$volatile.acidity))
 hist(red_wine_data$volatile.acidity, main = "Volatile Acidity (Red Wine)", xlab = "Volatile Acidity (g/L)")
 hist(white_wine_data$volatile.acidity, main = "Volatile Acidity (White Wine)", xlab = "Volatile Acidity (g/L)")
 
+
+
+```
+
+Here we want to analyze the distribution of volatile acidity, thus we use a histogram. This type of plot helps us see how acidity levels are spread across red and white wines and makes it easier to spot patterns or outliers. 
+
+
+```{r}
 #Barplot of wine quality
 barplot(table(red_wine_data$quality), main = "Quality Scores (Red Wine)", xlab = "Quality Score", ylab = "Count")
 barplot(table(white_wine_data$quality), main = "Quality Scores (White Wine)", xlab = "Quality Score", ylab = "Count")
 ```
+
+Due to wine quality being a discrete score, we use a bar plot to show how often each quality rating appears. This helps us effectivly identify the most common quality levels in red and white wines.
+
+
 
 # Hypotheses 1
 I believe that the higher alcohol content a wine has, the higher the wine quality will be. This is because alcohol can enhance the body and flavor of wine, which are important factors in how quality is perceived." 

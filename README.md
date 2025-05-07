@@ -6,21 +6,20 @@ README
 There are many factors that contribute to wine quality. Some of the most
 important ones to note are weather and climate, balance, and the wine
 making process. We’ll start with the first: climate. Before making wine,
-it is crucial to have high-quality grapes. Depending on the weather,
+it is crucial to have high quality grapes. Depending on the weather,
 your grapes could either develop an abundance of flavors and juices or
-end up lacking both. The type of wine someone wants can vary — for
+end up lacking both. The type of wine someone wants can vary, for
 example, in cooler climates, grapes tend to be higher in acidity. In
 hotter climates, grapes tend to ripen more fully, leading to wines with
 higher sugar content, higher alcohol levels, and a fuller body. Balance
-in wine is also very important. You don’t want one element — whether
-sweetness, acidity, tannin, alcohol, or body — to stand out
-significantly more than the others. This is why winemakers sometimes let
-their wine sit for months, or even years, to allow the elements to
-balance each other out. Lastly, the wine making process itself plays a
-major role. From the choice of grapes to how those grapes are grown, to
-fermentation methods and aging periods — every step matters. If one step
-is not as carefully executed as the others, it can negatively impact the
-final quality of the wine.
+in wine is also very important. You don’t want one element, whether
+sweetness, acidity, tannin, alcohol, or body, to stand out significantly
+more than the others. This is why winemakers sometimes let their wine
+sit for months, or even years, to allow the elements to balance each
+other out. Lastly, the wine making process itself plays a major role.
+From the choice of grapes to how those grapes are grown, to fermentation
+methods and aging period. If one step is not as carefully executed as
+the others, it can negatively impact the final quality of the wine.
 
 # Data Understanding
 
@@ -101,57 +100,68 @@ ncol(white_wine_data)
 # Summary Statistics:
 
 ``` r
+# Convert all columns to numeric safely, replacing comma with dot
+red_wine_data[] <- lapply(red_wine_data, function(x) {
+  as.numeric(gsub(",", ".", x))
+})
 summary(red_wine_data)
 ```
 
-    ##  fixed.acidity      volatile.acidity   citric.acid        residual.sugar      chlorides         free.sulfur.dioxide
-    ##  Length:1599        Length:1599        Length:1599        Length:1599        Length:1599        Length:1599        
-    ##  Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   
-    ##  Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   
-    ##                                                                                                                    
-    ##                                                                                                                    
-    ##                                                                                                                    
-    ##  total.sulfur.dioxide   density               pH             sulphates           alcohol             quality     
-    ##  Length:1599          Length:1599        Length:1599        Length:1599        Length:1599        Min.   :3.000  
-    ##  Class :character     Class :character   Class :character   Class :character   Class :character   1st Qu.:5.000  
-    ##  Mode  :character     Mode  :character   Mode  :character   Mode  :character   Mode  :character   Median :6.000  
-    ##                                                                                                   Mean   :5.636  
-    ##                                                                                                   3rd Qu.:6.000  
-    ##                                                                                                   Max.   :8.000
+    ##  fixed.acidity   volatile.acidity  citric.acid    residual.sugar     chlorides       free.sulfur.dioxide
+    ##  Min.   : 4.60   Min.   :0.1200   Min.   :0.000   Min.   : 0.900   Min.   :0.01200   Min.   : 1.00      
+    ##  1st Qu.: 7.10   1st Qu.:0.3900   1st Qu.:0.090   1st Qu.: 1.900   1st Qu.:0.07000   1st Qu.: 7.00      
+    ##  Median : 7.90   Median :0.5200   Median :0.260   Median : 2.200   Median :0.07900   Median :14.00      
+    ##  Mean   : 8.32   Mean   :0.5278   Mean   :0.271   Mean   : 2.539   Mean   :0.08747   Mean   :15.87      
+    ##  3rd Qu.: 9.20   3rd Qu.:0.6400   3rd Qu.:0.420   3rd Qu.: 2.600   3rd Qu.:0.09000   3rd Qu.:21.00      
+    ##  Max.   :15.90   Max.   :1.5800   Max.   :1.000   Max.   :15.500   Max.   :0.61100   Max.   :72.00      
+    ##  total.sulfur.dioxide    density             pH          sulphates         alcohol         quality     
+    ##  Min.   :  6.00       Min.   :0.9901   Min.   :2.740   Min.   :0.3300   Min.   : 8.40   Min.   :3.000  
+    ##  1st Qu.: 22.00       1st Qu.:0.9956   1st Qu.:3.210   1st Qu.:0.5500   1st Qu.: 9.50   1st Qu.:5.000  
+    ##  Median : 38.00       Median :0.9968   Median :3.310   Median :0.6200   Median :10.20   Median :6.000  
+    ##  Mean   : 46.47       Mean   :0.9967   Mean   :3.311   Mean   :0.6581   Mean   :10.42   Mean   :5.636  
+    ##  3rd Qu.: 62.00       3rd Qu.:0.9978   3rd Qu.:3.400   3rd Qu.:0.7300   3rd Qu.:11.10   3rd Qu.:6.000  
+    ##  Max.   :289.00       Max.   :1.0037   Max.   :4.010   Max.   :2.0000   Max.   :14.90   Max.   :8.000
+
+# Red wine summary:
+
+The red wine dataset includes 12 features that describe different
+chemical properties. Alcohol ranges from 8.5% to 14%, with an average of
+about 10.3%, and most wines have a quality rating around 6. Some
+features like residual sugar and total sulfur dioxide have wide ranges,
+suggesting a few extreme values. Overall, the data shows a good mix of
+values, with some variables slightly higher in the top quartile.
 
 ``` r
+white_wine_data[] <- lapply(white_wine_data, function(x) {
+  as.numeric(gsub(",", ".", x))
+})
 summary(white_wine_data)
 ```
 
-    ##  fixed.acidity      volatile.acidity   citric.acid        residual.sugar      chlorides         free.sulfur.dioxide
-    ##  Length:4898        Length:4898        Length:4898        Length:4898        Length:4898        Length:4898        
-    ##  Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   
-    ##  Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   
-    ##                                                                                                                    
-    ##                                                                                                                    
-    ##                                                                                                                    
-    ##  total.sulfur.dioxide   density               pH             sulphates           alcohol             quality     
-    ##  Length:4898          Length:4898        Length:4898        Length:4898        Length:4898        Min.   :3.000  
-    ##  Class :character     Class :character   Class :character   Class :character   Class :character   1st Qu.:5.000  
-    ##  Mode  :character     Mode  :character   Mode  :character   Mode  :character   Mode  :character   Median :6.000  
-    ##                                                                                                   Mean   :5.878  
-    ##                                                                                                   3rd Qu.:6.000  
-    ##                                                                                                   Max.   :9.000
+    ##  fixed.acidity    volatile.acidity  citric.acid     residual.sugar     chlorides       free.sulfur.dioxide
+    ##  Min.   : 3.800   Min.   :0.0800   Min.   :0.0000   Min.   : 0.600   Min.   :0.00900   Min.   :  2.00     
+    ##  1st Qu.: 6.300   1st Qu.:0.2100   1st Qu.:0.2700   1st Qu.: 1.700   1st Qu.:0.03600   1st Qu.: 23.00     
+    ##  Median : 6.800   Median :0.2600   Median :0.3200   Median : 5.200   Median :0.04300   Median : 34.00     
+    ##  Mean   : 6.855   Mean   :0.2782   Mean   :0.3342   Mean   : 6.391   Mean   :0.04577   Mean   : 35.31     
+    ##  3rd Qu.: 7.300   3rd Qu.:0.3200   3rd Qu.:0.3900   3rd Qu.: 9.900   3rd Qu.:0.05000   3rd Qu.: 46.00     
+    ##  Max.   :14.200   Max.   :1.1000   Max.   :1.6600   Max.   :65.800   Max.   :0.34600   Max.   :289.00     
+    ##  total.sulfur.dioxide    density             pH          sulphates         alcohol         quality     
+    ##  Min.   :  9.0        Min.   :0.9871   Min.   :2.720   Min.   :0.2200   Min.   : 8.00   Min.   :3.000  
+    ##  1st Qu.:108.0        1st Qu.:0.9917   1st Qu.:3.090   1st Qu.:0.4100   1st Qu.: 9.50   1st Qu.:5.000  
+    ##  Median :134.0        Median :0.9937   Median :3.180   Median :0.4700   Median :10.40   Median :6.000  
+    ##  Mean   :138.4        Mean   :0.9940   Mean   :3.188   Mean   :0.4898   Mean   :10.51   Mean   :5.878  
+    ##  3rd Qu.:167.0        3rd Qu.:0.9961   3rd Qu.:3.280   3rd Qu.:0.5500   3rd Qu.:11.40   3rd Qu.:6.000  
+    ##  Max.   :440.0        Max.   :1.0390   Max.   :3.820   Max.   :1.0800   Max.   :14.20   Max.   :9.000
 
-Red wine summary:
+# white wine summary:
 
-The red wine data set contains 1,599 observations. There are a few
-numeric columns ,there’s volatile acidity that has a mean of about 0.53,
-and alcohol ranges from 8.4% to 14.9% with a mean of 10.42%. The wine
-quality scores range from 3 to 8, with a median of 6 and an average of
-5.64.
-
-white wine summary:
-
-The white wine data set has 4,898 observations. Volatile acidity
-averages 0.28, alcohol ranges from 8.0% to 14.2% with a mean of 10.51%,
-and pH values average around 3.19. Wine quality scores range from 3 to
-9, with a mean of 5.88 and a median of 6.
+The white wine dataset includes 12 features as well and shows a wide
+range in some values, especially residual sugar (up to 65.8 g/L) and
+total sulfur dioxide (up to 440 mg/L). Alcohol content ranges from 8% to
+14.2%, with an average around 10.5%. Most wines have a quality rating of
+5 or 6, with a median of 6. Overall, the data seem well-distributed,
+though some features show signs of high variability and possible
+outliers.
 
 # checking for missing data
 
@@ -159,19 +169,23 @@ and pH values average around 3.19. Wine quality scores range from 3 to
 colSums(is.na(red_wine_data))
 ```
 
-    ##        fixed.acidity     volatile.acidity          citric.acid       residual.sugar            chlorides  free.sulfur.dioxide 
-    ##                    0                    0                    0                    0                    0                    0 
-    ## total.sulfur.dioxide              density                   pH            sulphates              alcohol              quality 
-    ##                    0                    0                    0                    0                    0                    0
+    ##        fixed.acidity     volatile.acidity          citric.acid       residual.sugar            chlorides 
+    ##                    0                    0                    0                    0                    0 
+    ##  free.sulfur.dioxide total.sulfur.dioxide              density                   pH            sulphates 
+    ##                    0                    0                    0                    0                    0 
+    ##              alcohol              quality 
+    ##                    0                    0
 
 ``` r
 colSums(is.na(white_wine_data))
 ```
 
-    ##        fixed.acidity     volatile.acidity          citric.acid       residual.sugar            chlorides  free.sulfur.dioxide 
-    ##                    0                    0                    0                    0                    0                    0 
-    ## total.sulfur.dioxide              density                   pH            sulphates              alcohol              quality 
-    ##                    0                    0                    0                    0                    0                    0
+    ##        fixed.acidity     volatile.acidity          citric.acid       residual.sugar            chlorides 
+    ##                    0                    0                    0                    0                    0 
+    ##  free.sulfur.dioxide total.sulfur.dioxide              density                   pH            sulphates 
+    ##                    0                    0                    0                    0                    0 
+    ##              alcohol              quality 
+    ##                    0                    0
 
 Based on the code, it looks like we have no missing values, in either
 red or white wine data set.
@@ -180,31 +194,37 @@ red or white wine data set.
 
 ``` r
 # Histogram of Alcohol in Red and White Wines
-red_wine_data$alcohol = as.numeric(red_wine_data$alcohol)
-white_wine_data$alcohol = as.numeric(gsub(",", ".", white_wine_data$alcohol))
-hist(red_wine_data$alcohol, main = "Alcohol Distribution (Red Wine)", xlab = "Alcohol (%)")
+par(mfrow = c(1, 2))  # Split plot area into 2 columns
+hist(red_wine_data$alcohol, main = "Alcohol (Red Wine)", xlab = "Alcohol (%)", col = "red")
+hist(white_wine_data$alcohol, main = "Alcohol (White Wine)", xlab = "Alcohol (%)", col = "white")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-42-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 ``` r
-hist(white_wine_data$alcohol, main = "Alcohol Distribution (White Wine)", xlab = "Alcohol (%)")
+par(mfrow = c(1, 1))  # Reset layout
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-42-2.png)<!-- -->
+Here we’re using a histogram plot to show the average alcohol content in
+wine. This type of plot is helpful because it clearly displays the most
+common alcohol levels and highlights any potential outliers.
 
 ``` r
 #Boxplot of alcohol
 boxplot(red_wine_data$alcohol, main = "Alcohol Boxplot (Red Wine)", ylab = "Alcohol (%)")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-42-3.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
 ``` r
 boxplot(white_wine_data$alcohol, main = "Alcohol Boxplot (White Wine)", ylab = "Alcohol (%)")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-42-4.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-6-2.png)<!-- -->
+
+Here we use a boxplot to show the spread and distribution of alcohol
+content in the wines. A boxplot is helpful because it clearly shows the
+median, overall range, and any outliers in the data.
 
 ``` r
 # Histogram of pH in Red and White Wines
@@ -213,13 +233,18 @@ red_wine_data$pH = as.numeric(gsub(",", ".", red_wine_data$pH))
 hist(red_wine_data$pH, main = "pH Distribution (Red Wine)", xlab = "pH Level")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-42-5.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
 ``` r
 hist(white_wine_data$pH, main = "pH Distribution (White Wine)", xlab = "pH Level")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-42-6.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-7-2.png)<!-- -->
+
+Again here we are using a box plot because it does the best at showing
+us the distribution of pH levels in red and white wines. This way of
+plotting helps us better analyze where most wines fall on the pH scale
+and whether the data is skewed or contains any unusual values.
 
 ``` r
 #hist of volatitle
@@ -228,26 +253,35 @@ white_wine_data$volatile.acidity = as.numeric(gsub(",", ".", white_wine_data$vol
 hist(red_wine_data$volatile.acidity, main = "Volatile Acidity (Red Wine)", xlab = "Volatile Acidity (g/L)")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-42-7.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
 ``` r
 hist(white_wine_data$volatile.acidity, main = "Volatile Acidity (White Wine)", xlab = "Volatile Acidity (g/L)")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-42-8.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-8-2.png)<!-- -->
+
+Here we want to analyze the distribution of volatile acidity, thus we
+use a histogram. This type of plot helps us see how acidity levels are
+spread across red and white wines and makes it easier to spot patterns
+or outliers.
 
 ``` r
 #Barplot of wine quality
 barplot(table(red_wine_data$quality), main = "Quality Scores (Red Wine)", xlab = "Quality Score", ylab = "Count")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-42-9.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 ``` r
 barplot(table(white_wine_data$quality), main = "Quality Scores (White Wine)", xlab = "Quality Score", ylab = "Count")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-42-10.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-9-2.png)<!-- -->
+
+Due to wine quality being a discrete score, we use a bar plot to show
+how often each quality rating appears. This helps us effectivly identify
+the most common quality levels in red and white wines.
 
 # Hypotheses 1
 
@@ -262,14 +296,14 @@ perceived.”
 qqnorm(white_wine_data$alcohol)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-43-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
 ``` r
 qqnorm(red_wine_data$alcohol)
 qqline(white_wine_data$alcohol, col = "red")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-43-2.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-10-2.png)<!-- -->
 
 # statistical testing
 
@@ -333,14 +367,14 @@ wine.
 qqnorm(white_wine_data$volatile.acidity)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-45-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
 ``` r
 qqnorm(red_wine_data$volatile.acidity)
 qqline(red_wine_data$volatile.acidity, col = "blue")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-45-2.png)<!-- --> \#
+![](README_files/figure-gfm/unnamed-chunk-12-2.png)<!-- --> \#
 Statistical Testing:
 
 ``` r
@@ -353,7 +387,8 @@ white_wine_data$quality = as.numeric(gsub(",", ".", white_wine_data$quality))
 cor.test(white_wine_data$volatile.acidity, white_wine_data$quality, method = "spearman")
 ```
 
-    ## Warning in cor.test.default(white_wine_data$volatile.acidity, white_wine_data$quality, : Cannot compute exact p-value with ties
+    ## Warning in cor.test.default(white_wine_data$volatile.acidity, white_wine_data$quality, : Cannot compute exact p-value with
+    ## ties
 
     ## 
     ##  Spearman's rank correlation rho
@@ -369,7 +404,8 @@ cor.test(white_wine_data$volatile.acidity, white_wine_data$quality, method = "sp
 cor.test(red_wine_data$volatile.acidity, red_wine_data$quality, method = "spearman")
 ```
 
-    ## Warning in cor.test.default(red_wine_data$volatile.acidity, red_wine_data$quality, : Cannot compute exact p-value with ties
+    ## Warning in cor.test.default(red_wine_data$volatile.acidity, red_wine_data$quality, : Cannot compute exact p-value with
+    ## ties
 
     ## 
     ##  Spearman's rank correlation rho
